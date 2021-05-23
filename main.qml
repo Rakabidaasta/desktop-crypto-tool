@@ -24,6 +24,24 @@ ApplicationWindow {
         }
 
         Page2Form {
+            onCheck_hash: {
+                if (strVal === "") {
+                    bwidth = 1
+                    result = ""
+                    return
+                }
+                console.log(strVal.length)
+                if (strVal.length !== 32) {
+                    result = "Это не MD5 хэш!"
+                    return
+                }
+
+                bwidth = 0
+
+                var a = hash.check_hash(strVal)
+                result = a
+                return
+            }
         }
 
         Page3Form {

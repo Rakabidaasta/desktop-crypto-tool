@@ -13,27 +13,39 @@ Page {
         padding: 10
     }
 
+    property string result: ""
+    property int bwidth: 0
+
+    signal check_hash(var strVal)
+
     TextField {
         id: textEdit
         x: 39
         y: 154
-        width: 370
+        width: 406
         height: 61
-        //        height: 50
         color: "#9b9b9b"
         font.pixelSize: 27
+        background: Rectangle {
+            radius: 0
+            implicitWidth: 100
+            implicitHeight: 24
+            border.color: "#F44336"
+            border.width: page.bwidth
+        }
 
         placeholderText: "Введите MD5 хэш..."
     }
 
     TextField {
-        id: textEdit2
+        id: textRes
         x: 39
         y: 231
-        width: 494
+        width: 524
         color: "#9b9b9b"
         font.pixelSize: 27
         placeholderText: "Результат"
+        text: page.result
         readOnly: true
     }
 
@@ -53,8 +65,14 @@ Page {
         y: 161
         text: qsTr("Готово")
         anchors.left: textEdit.right
-        anchors.leftMargin: 52
+        anchors.leftMargin: 46
         highlighted: true
         Material.accent: Material.Greens
+
+        Connections {
+            target: button
+            onClicked: page.check_hash(textEdit.text)
+            //            onClicked: console.log("clicked")
+        }
     }
 }
