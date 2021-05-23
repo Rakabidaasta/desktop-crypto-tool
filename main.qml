@@ -1,9 +1,12 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.5
+import QtQuick 2.14
+import QtQuick.Controls 2.14
+import QtQuick.Window 2.14
 import QtQuick.Controls.Material 2.5
 
 ApplicationWindow {
     width: 640
+    minimumHeight: 480
+    minimumWidth: 600
     height: 480
     visible: true
     title: qsTr("Crypto")
