@@ -2,6 +2,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QCryptographicHash>
+#include <QDir>
 
 Hash::Hash(QObject *parent) : QObject(parent)
 {
@@ -10,7 +11,7 @@ Hash::Hash(QObject *parent) : QObject(parent)
 
 QString Hash::check_hash(QString hash) {
     QString eq_str;
-    QFile wordlist("~/rockyou.txt");
+    QFile wordlist(QDir::homePath() + "/rockyou.txt");
     if (!wordlist.open(QIODevice::ReadOnly))
             return "Не могу открыть словарь!";
 
