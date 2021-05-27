@@ -4,6 +4,7 @@
 #include <QQmlContext>
 
 #include "hash.h"
+#include "rsa.h"
 
 int main(int argc, char *argv[])
 {
@@ -23,6 +24,9 @@ int main(int argc, char *argv[])
 
     Hash hash;
     engine.rootContext()->setContextProperty("hash", &hash);
+
+    RSA rsa;
+    engine.rootContext()->setContextProperty("rsa", &rsa);
 
     engine.load(url);
 

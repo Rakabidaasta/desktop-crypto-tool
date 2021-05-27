@@ -1,6 +1,8 @@
 QT += quick
 
-CONFIG += c++11
+CONFIG += c++17
+
+LIBS += -lgmp
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -8,7 +10,8 @@ CONFIG += c++11
 
 SOURCES += \
         code/hash.cpp \
-        code/main.cpp
+        code/main.cpp \
+        code/rsa.cpp
 
 RESOURCES += qml.qrc
 
@@ -24,4 +27,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    code/hash.h
+    code/hash.h \
+    code/rsa.h

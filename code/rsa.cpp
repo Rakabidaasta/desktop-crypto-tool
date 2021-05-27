@@ -1,0 +1,55 @@
+#include <QDebug>
+#include <QFile>
+#include <QCryptographicHash>
+#include <QDir>
+
+#include "rsa.h"
+#include <gmpxx.h>
+
+RSA::RSA(QObject *parent) : QObject(parent)
+{
+
+}
+
+long int RSA::calculateD( long int e, long int phi)
+{
+    long int d;
+    long int k = 1;
+
+    while (1) {
+        k = k + phi;
+
+        if ( k % e == 0) {
+            d = (k / e);
+            return d;
+        }
+    }
+}
+
+
+long long RSA::solve_rsa(long long p, long long q, long long e, long long ct) {
+    long n = p * q;
+    long phi = ( p - 1 ) * ( q - 1 );
+    long d = calculateD(e, phi);
+
+    long long decryptedText = decrypt(ct, d, n);
+
+    return decryptedText;
+}
+
+
+long long RSA::decrypt(long long i, long long d, long long n)
+{
+        long long current, result;
+
+        current = i;
+        result = 1;
+
+        for ( long long j = 0; j < d; j++ )
+        {
+           result = result * current;
+           result = result % n;
+        }
+
+        return result;
+}

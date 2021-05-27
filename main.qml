@@ -37,7 +37,6 @@ ApplicationWindow {
                 }
 
                 bwidth = 0
-
                 var a = hash.check_hash(strVal)
                 result = a
                 return
@@ -45,7 +44,37 @@ ApplicationWindow {
         }
 
         Page3Form {
+            onSolve_RSA: {
+                if (p === "") {
+                    pbwidth = 1
+                    result = ""
+                    return
+                }
+                pbwidth = 0
 
+                if (q === "") {
+                    qbwidth = 1
+                    result = ""
+                    return
+                }
+                qbwidth = 0
+
+                if (e === "") {
+                    ebwidth = 1
+                    result = ""
+                    return
+                }
+                ebwidth = 0
+
+                if (ct === "") {
+                    ctbwidth = 1
+                    result = ""
+                    return
+                }
+                ctbwidth = 0
+
+                result = rsa.solve_rsa(Number(p), Number(q), Number(e), Number(ct))
+            }
         }
 
         Page4Form {

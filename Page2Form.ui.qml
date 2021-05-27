@@ -72,7 +72,6 @@ Page {
         Connections {
             target: button
             onClicked: page.check_hash(textEdit.text)
-            //            onClicked: console.log("clicked")
         }
     }
 }

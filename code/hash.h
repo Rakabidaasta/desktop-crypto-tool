@@ -1,10 +1,7 @@
 #ifndef HASH_H
 #define HASH_H
 
-#include <QVector>
 #include <QObject>
-#include <QRandomGenerator>
-#include <math.h>
 
 class Hash : public QObject
 {
