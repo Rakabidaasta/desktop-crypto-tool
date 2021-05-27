@@ -14,6 +14,7 @@ Page {
     property string result: ""
 
     signal solve_RSA(var p, var q, var e, var ct)
+    signal copy(var text)
 
     header: Label {
         text: qsTr("RSA")
@@ -114,7 +115,18 @@ Page {
         text: page.result
         placeholderText: ""
         readOnly: true
+
+        MouseArea {
+            id: res_ma
+            anchors.fill: parent
+        }
+
+        Connections {
+            target: res_ma
+            onClicked: page.copy(textEdit_res.text)
+        }
     }
+
     Button {
         id: button
         y: 192

@@ -1,74 +1,38 @@
 #include "bases.h"
+#include <QList>
 #include <gmpxx.h>
+#include<cppcodec/base32_default_rfc4648.hpp>
+#include<cppcodec/base64_default_rfc4648.hpp>
 
 Bases::Bases(QObject *parent) : QObject(parent)
 {
-
+    clipboard = QGuiApplication::clipboard();
 }
 
-std::string base64_chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    "abcdefghijklmnopqrstuvwxyz"
-    "0123456789+/";
+QString base16_chars = "0123456789ABCDEF";
+QString base32_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+QString base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+QString base85_chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+-;<=>?@^_`{|}~";
 
+QList<QString> Bases::bases_encode(QString bytes_to_encode)
+{
+    QList<QString> result;
 
-bool Bases::is_base64(unsigned char c) {
-    return (isalnum(c) || (c == '+') || (c == '/'));
+    QString b64 = QString::fromStdString(cppcodec::base64_rfc4648::encode(bytes_to_encode.toStdString()));
+    QString b32 = QString::fromStdString(cppcodec::base32_rfc4648::encode(bytes_to_encode.toStdString()));
+    QString hexStr = bytes_to_encode.toUtf8().toHex();
+
+    result.append(hexStr);
+    result.append(b32);
+    result.append(b64);
+
+    return result;
 }
 
-QString Bases::base64_encode(QString bytes_to_encode, int in_len) {
-    QString ret;
-    int i = 0;
-    int j = 0;
-    char char_array_3[3];
-    char char_array_4[4];
-    int count = 0;
 
-    while (in_len--) {
-        char_array_3[i++] = bytes_to_encode.toStdString()[count++];
-        if (i == 3) {
-            char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
-            char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
-            char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
-            char_array_4[3] = char_array_3[2] & 0x3f;
-
-            for(i = 0; (i <4) ; i++)
-                ret += base64_chars[char_array_4[i]];
-            i = 0;
-        }
-    }
-
-    if (i) {
-        for(j = i; j < 3; j++)
-            char_array_3[j] = '\0';
-
-    char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
-    char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
-    char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
-    char_array_4[3] = char_array_3[2] & 0x3f;
-
-    for (j = 0; (j < i + 1); j++)
-        ret += base64_chars[char_array_4[j]];
-
-    while((i++ < 3))
-        ret += '=';
-
-    }
-
-    return ret;
+QString Bases::get_from_clipboard() {
+    return clipboard->text();
 }
-
-QString Bases::base16_encode(QString bytes_to_encode) {
-    std::string input = bytes_to_encode.toStdString();
-    char hex_digits[] = "0123456789ABCDEF";
-
-    std::string output;
-    output.reserve(input.length() * 2);
-    for (unsigned char c : input)
-    {
-        output.push_back(hex_digits[c >> 4]);
-        output.push_back(hex_digits[c & 15]);
-    }
-    return QString::fromUtf8(output.c_str());
+void Bases::set_to_clipboard(QString text) {
+    clipboard->setText(text);
 }
-

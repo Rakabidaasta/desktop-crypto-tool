@@ -17,6 +17,7 @@ Page {
     property int bwidth: 0
 
     signal check_hash(var strVal)
+    signal copy(var text)
 
     TextField {
         id: textEdit
@@ -47,6 +48,16 @@ Page {
         placeholderText: "Результат"
         text: page.result
         readOnly: true
+
+        MouseArea {
+            id: res_ma
+            anchors.fill: parent
+        }
+
+        Connections {
+            target: res_ma
+            onClicked: page.copy(textRes.text)
+        }
     }
 
     Text {
