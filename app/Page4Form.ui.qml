@@ -10,6 +10,7 @@ Page {
     property string result16: ""
     property string result32: ""
     property string result64: ""
+    property int pbwidth: 0
 
     signal encode_bases(var pt)
     signal copy(var text)
@@ -30,6 +31,14 @@ Page {
         font.pixelSize: 23
         anchors.leftMargin: 32
         anchors.topMargin: 6
+
+        background: Rectangle {
+            radius: 0
+            implicitWidth: 100
+            implicitHeight: 24
+            border.color: "#F44336"
+            border.width: page.ebwidth
+        }
 
         placeholderText: "Введите сообщение..."
     }

@@ -95,7 +95,10 @@ ApplicationWindow {
 
         Page4Form {
             onEncode_bases: {
-                if (pt === "") return
+                if (pt === "") {
+                    pbwidth = 1
+                    return
+                }
 
                 var result = bases.bases_encode(pt)
                 result16 = result[0]
