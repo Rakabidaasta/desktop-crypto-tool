@@ -7,6 +7,13 @@ Page {
     width: 600
     height: 400
 
+    property string result16: ""
+    property string result32: ""
+    property string result64: ""
+    property string result85: ""
+
+    signal encode_bases(var pt)
+
     header: Label {
         text: qsTr("Кодировки")
         font.pixelSize: Qt.application.font.pixelSize * 2
@@ -38,6 +45,7 @@ Page {
         anchors.topMargin: 25
         placeholderText: "Base16"
         readOnly: true
+        text: page.result16
     }
 
     TextField {
@@ -52,6 +60,7 @@ Page {
         anchors.topMargin: 11
         placeholderText: "Base32"
         readOnly: true
+        text: page.result32
     }
 
     TextField {
@@ -66,6 +75,7 @@ Page {
         anchors.topMargin: 11
         placeholderText: "Base64"
         readOnly: true
+        text: page.result64
     }
 
     TextField {
@@ -80,16 +90,22 @@ Page {
         anchors.topMargin: 11
         placeholderText: "Ascii85"
         readOnly: true
+        text: page.result85
     }
 
     Button {
-        id: button
+        id: button4
         y: 8
         text: qsTr("Готово")
         anchors.left: textEdit_pt.right
         anchors.leftMargin: 80
         highlighted: true
         Material.accent: Material.Greens
+
+        Connections {
+            target: button4
+            onClicked: page.encode_bases(textEdit_pt.text)
+        }
     }
 
 }

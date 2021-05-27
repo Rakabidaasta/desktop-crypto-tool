@@ -5,6 +5,7 @@
 
 #include "hash.h"
 #include "rsa.h"
+#include "bases.h"
 
 int main(int argc, char *argv[])
 {
@@ -27,6 +28,9 @@ int main(int argc, char *argv[])
 
     RSA rsa;
     engine.rootContext()->setContextProperty("rsa", &rsa);
+
+    Bases bases;
+    engine.rootContext()->setContextProperty("bases", &bases);
 
     engine.load(url);
 

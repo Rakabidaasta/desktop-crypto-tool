@@ -78,7 +78,12 @@ ApplicationWindow {
         }
 
         Page4Form {
+            onEncode_bases: {
+                if (pt === "") return
 
+                result16 = bases.base16_encode(pt, pt.length)
+                result64 = bases.base64_encode(pt, pt.length)
+            }
         }
     }
 
