@@ -1,0 +1,72 @@
+\mode<presentation>
+
+\newif\ifbeamer@secheader
+\beamer@secheadertrue
+
+\DeclareOptionBeamer{nosecheader}{\beamer@secheaderfalse}
+\ProcessOptionsBeamer
+
+\usetheme{Madrid}
+\usecolortheme[RGB={0,5,165}]{structure}
+\usecolortheme{dolphin}
+\useinnertheme{rectangles}
+\useoutertheme{infolines}
+
+
+\setlength{\parskip}{0.5em}
+
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\hspace*{0.2em}\insertshortdate{}\hspace*{0.8em}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.50\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}%
+    \hyperlink{content}{\insertframenumber{} / \inserttotalframenumber\hspace*{1ex}}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+\centering
+  \hspace*{0.5cm}%
+ \raisebox{-0.5\height}{\href{http://petrsu.ru}{\includegraphics[width=0.12\textwidth]{logos/petrsu-logo}}}
+  \hfill\raisebox{-0.5\height}{\parbox{.70\textwidth}{\centering\usebeamerfont{institute}\insertinstitute}}\hfill%
+ \raisebox{-0.5\height}{\href{http://cs.petrsu.ru}{\includegraphics[width=0.12\textwidth]{logos/cs-karelia-ru-shaded}}}
+  \hspace*{0.5cm}\par\bigskip
+  \usebeamerfont{author}\insertauthor\par
+  {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\par\medskip
+  \usebeamerfont{subtitle}\insertsubtitle\par\bigskip
+  \usebeamerfont{date}\insertdate
+  \vfill
+}
+
+\setbeamertemplate{background}{%
+
+% Put logos at the bottom of the page unless it is the first(title) page
+\ifnum\c@page>1%
+  \parbox[b][\paperheight]{\paperwidth}{%
+    \flushright
+    \includegraphics[width=5ex]{logos/cs-karelia-ru-shaded}
+    \hspace{1ex}%
+    \vspace{4.5ex}
+}\fi}
+
+\usesubitemizeitemtemplate{%
+    \tiny\raise1.5pt\hbox{\color{beamerstructure}$\blacktriangleright$}%
+}
+\usesubsubitemizeitemtemplate{%
+    \tiny\raise1.5pt\hbox{\color{beamerstructure}$\bigstar$}%
+}
+
+\setbeamersize{text margin left=1em,text margin right=1em}
+
+\ifbeamer@secheader\else\setbeamertemplate{headline}[default]\fi
+
+\mode
+<all>
