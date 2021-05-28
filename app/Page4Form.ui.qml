@@ -37,7 +37,7 @@ Page {
             implicitWidth: 100
             implicitHeight: 24
             border.color: "#F44336"
-            border.width: page.ebwidth
+            border.width: page.pbwidth
         }
 
         placeholderText: "Введите сообщение..."

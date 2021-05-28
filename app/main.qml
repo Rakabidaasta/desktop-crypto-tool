@@ -8,6 +8,8 @@ ApplicationWindow {
     minimumHeight: 480
     minimumWidth: 600
     height: 480
+    maximumHeight: 480
+    maximumWidth: 600
     visible: true
     title: qsTr("Crypto")
 
@@ -100,10 +102,12 @@ ApplicationWindow {
                     return
                 }
 
+                pbwidth = 0
                 var result = bases.bases_encode(pt)
                 result16 = result[0]
                 result32 = result[1]
                 result64 = result[2]
+                return
             }
 
 
