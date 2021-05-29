@@ -10,6 +10,7 @@ before_install:
     - sudo apt-get install -y qt5-default qttools5-dev-tools
     - sudo apt-get install build-essential
     - git clone https://github.com/tplgy/cppcodec.git && cd cppcodec && cmake . -DBUILD_TESTING=OFF && make && sudo make install && cd .. && rm -rf cppcodec
+    - wget "https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt" -O ~/rockyou.txt
     - pip install --user cpp-coveralls
 
 #addons:
