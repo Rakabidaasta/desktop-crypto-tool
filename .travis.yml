@@ -1,0 +1,26 @@
+os: linux
+dist: bionic
+
+language:
+    - cpp
+
+before_install:
+    - pip install --user cpp-coveralls
+
+#addons:
+    #sonarcloud:
+        #organization: "rakabidasta"
+    #token: $SONAR_TOKEN
+
+script:
+    - qmake 
+    - make
+    - ./tests/tests
+    
+cache:
+    directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
+
+notifications:
+    email: false 
