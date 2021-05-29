@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.com/Rakabidaasta/desktop-crypto-tool.svg?branch=main)](https://travis-ci.com/Rakabidaasta/desktop-crypto-tool)
 [![Coverage Status](https://coveralls.io/repos/github/Rakabidaasta/desktop-crypto-tool/badge.svg?branch=main)](https://coveralls.io/github/Rakabidaasta/desktop-crypto-tool?branch=main)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Rakabidaasta_desktop-crypto-tool&metric=alert_status)](https://sonarcloud.io/dashboard?id=Rakabidaasta_desktop-crypto-tool)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Rakabidaasta_desktop-crypto-tool&metric=bugs)](https://sonarcloud.io/dashboard?id=Rakabidaasta_desktop-crypto-tool)
 
 ---
 
