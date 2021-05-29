@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/Rakabidaasta/desktop-crypto-tool.svg?branch=main)](https://travis-ci.com/Rakabidaasta/desktop-crypto-tool)
+[![Coverage Status](https://coveralls.io/repos/github/Rakabidaasta/desktop-crypto-tool/badge.svg?branch=main)](https://coveralls.io/github/Rakabidaasta/desktop-crypto-tool?branch=main)
 
 ---
 
