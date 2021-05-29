@@ -9,7 +9,7 @@
 
 *Desktop crypto tool* --- приложение, позволяющее быстро решить некоторые базовые задачи криптографии. Перед установкой приложения необходимо скачать словарь [rockyou.txt](https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt) и поместить его в домашний каталог.
 
-Ссылки на [отчёт](https://github.com/Rakabidaasta/desktop-crypto-tool/blob/main/docs/report.pdf) и [презентацию](https://github.com/Rakabidaasta/desktop-crypto-tool/blob/main/docs/slides.pdf).
+Ссылки на [отчёт](https://github.com/Rakabidaasta/desktop-crypto-tool/blob/main/docs/report.pdf), [презентацию](https://github.com/Rakabidaasta/desktop-crypto-tool/blob/main/docs/slides.pdf) и [описание тестов](https://github.com/Rakabidaasta/desktop-crypto-tool/blob/main/docs/tests.pdf).
 
 Функции:
 - [x] подбор строки, MD5-хеш которой соответствует заданному хешу (check_hash); 
