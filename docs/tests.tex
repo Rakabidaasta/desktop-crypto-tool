@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+
+\geometry{bmargin = 80pt, lmargin = 80pt, tmargin = 80pt, rmargin = 80pt}
+
+\begin{document}
+\section{Тестирование hash}
+\subsection{default}
+Входные данные -- MD5-хеш строки \textit{hello}, то есть \textit{5d41402abc4b2a76b9719d911017c592}.\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res == "hello". 
+\end{itemize}
+
+\subsection{short\_hash}
+Входные данные -- строка длиной в 31 символ, что меньше, чем длина MD5-хеша.\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res == "Это не MD5 хэш!". 
+\end{itemize}
+
+\subsection{long\_hash}
+Входные данные -- строка длиной в 33 символа, что больше, чем длина MD5-хеша.\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res == "Это не MD5 хэш!". 
+\end{itemize}
+
+\subsection{nothing\_find}
+Входные данные -- MD5-хеш строки, которой нет в словаре (rockyou.txt).\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res == "Ничего не нашлось :(". 
+\end{itemize}
+
+\section{Тестирование rsa}
+\subsection{prime\_p}
+Входные данные -- p = 62, q = 53, e = 17, ct = 3. p --- непростое число.\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res == -1. 
+\end{itemize}
+
+\subsection{prime\_q}
+Входные данные -- p = 61, q = 52, e = 17, ct = 3. q --- непростое число.\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res == -1. 
+\end{itemize}
+
+\subsection{prime\_e}
+Входные данные -- p = 61, q = 53, e = 10, ct = 3. e --- непростое число.\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res == -1. 
+\end{itemize}
+
+\subsection{default}
+Входные данные -- p = 61, q = 53, e = 17, ct = 2790. Пример из Википедии.\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res == 65. 
+\end{itemize}
+
+\section{Тестирование bases}
+\subsection{example}
+Входные данные -- строка \textit{lalala}.\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res[0] == "6C616C616C61"
+    \item res[1] == "NRQWYYLMME======"
+    \item res[2] == "bGFsYWxh" 
+\end{itemize}
+
+
+\end{document}

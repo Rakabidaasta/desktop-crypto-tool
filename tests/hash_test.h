@@ -6,7 +6,7 @@
 
 #include "../app/hash.h"
 
-TEST(hash, hello)
+TEST(hash, default)
 {
     Hash hash;
 
@@ -14,7 +14,7 @@ TEST(hash, hello)
     EXPECT_STREQ(res.toStdString().c_str(), "hello");
 }
 
-TEST(hash, long_hash)
+TEST(hash, short_hash)
 {
     Hash hash;
 
@@ -22,7 +22,7 @@ TEST(hash, long_hash)
     EXPECT_STREQ(res.toStdString().c_str(), "Это не MD5 хэш!");
 }
 
-TEST(hash, short_hash)
+TEST(hash, long_hash)
 {
     Hash hash;
 
