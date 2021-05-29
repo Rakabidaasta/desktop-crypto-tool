@@ -13,10 +13,10 @@ before_install:
     - wget "https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt" -O ~/rockyou.txt
     - pip install --user cpp-coveralls
 
-#addons:
-    #sonarcloud:
-        #organization: "rakabidasta"
-    #token: $SONAR_TOKEN
+addons:
+    sonarcloud:
+        organization: "rakabidasta"
+    token: $SONAR_TOKEN
 
 script:
     - qmake 
