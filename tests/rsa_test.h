@@ -4,7 +4,7 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
 
-#include "../app/code/rsa.h"
+#include "../app/rsa.h"
 
 TEST(rsa, prime_p)
 {

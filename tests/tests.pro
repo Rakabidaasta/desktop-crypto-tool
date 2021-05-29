@@ -12,10 +12,10 @@ QMAKE_CFLAGS += -fprofile-arcs -ftest-coverage
 LIBS += -lgcov
 
 SOURCES += main.cpp \
-    ../app/code/rsa.cpp
+    ../app/rsa.cpp
 
 INCLUDEPATH += ../app
 
 HEADERS += \
     rsa_test.h \
-    ../app/code/rsa.h
+    ../app/rsa.h
