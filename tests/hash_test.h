@@ -27,7 +27,7 @@ TEST(hash, short_hash)
     Hash hash;
 
     QString res = hash.check_hash("5d41402abc4b2a76b9719d911017c592f");
-    EXPECT_EQ(res.toStdString().c_str(), "Это не MD5 хэш!");
+    EXPECT_EQ(res, "Это не MD5 хэш!");
 }
 
 TEST(hash, nothing_find)
@@ -35,7 +35,7 @@ TEST(hash, nothing_find)
     Hash hash;
 
     QString res = hash.check_hash("5d41402abc4b2a76b9719d911017c593");
-    EXPECT_EQ(res.toStdString().c_str(), "Ничего не нашлось :(");
+    EXPECT_EQ(res, "Ничего не нашлось :(");
 }
 
 
