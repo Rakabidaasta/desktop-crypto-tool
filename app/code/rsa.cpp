@@ -2,13 +2,25 @@
 #include <QFile>
 #include <QCryptographicHash>
 #include <QDir>
+#include <cmath>
 
 #include "rsa.h"
+#include <iostream>
 #include <gmpxx.h>
 
 RSA::RSA(QObject *parent) : QObject(parent)
 {
 
+}
+
+bool RSA::IsPrime(long n)
+{
+    if (!(n-1)) return false;
+    for (long i = 2;i<=sqrt(n);i++)
+    {
+        if (n%i==0) return false;
+    }
+    return true;
 }
 
 long int RSA::calculateD( long int e, long int phi)
@@ -28,6 +40,12 @@ long int RSA::calculateD( long int e, long int phi)
 
 
 long long RSA::solve_rsa(long long p, long long q, long long e, long long ct) {
+    if (!IsPrime(p) || !IsPrime(q) || !IsPrime(e)) {
+        std::cerr << "Числа p, q и e должны быть нечётными!";
+        return -1;
+    }
+
+
     long n = p * q;
     long phi = ( p - 1 ) * ( q - 1 );
     long d = calculateD(e, phi);
