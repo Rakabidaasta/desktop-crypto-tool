@@ -10,6 +10,9 @@ Hash::Hash(QObject *parent) : QObject(parent)
 }
 
 QString Hash::check_hash(QString hash) {
+    if (hash.length() != 32) {
+        return "Это не MD5 хэш!";
+    }
     QString eq_str;
     QFile wordlist(QDir::homePath() + "/rockyou.txt");
     if (!wordlist.open(QIODevice::ReadOnly))
