@@ -16,7 +16,7 @@ before_install:
 addons:
     sonarcloud:
         organization: "rakabidasta"
-    token: $SONAR_TOKEN
+        token: $SONAR_TOKEN
 
 script:
     - qmake 
