@@ -47,7 +47,6 @@ long int RSA::calculateD( long int e, long int phi)
             return d;
         }
     }
-    return -1;
 }
 
 
@@ -65,10 +64,6 @@ long long RSA::solve_rsa(long long p, long long q, long long e, long long ct) {
     long n = p * q;
     long phi = ( p - 1 ) * ( q - 1 );
     long d = calculateD(e, phi);
-    if (d == -1) {
-        std::cerr << "Не найдено число d!";
-        return -1;
-    }
 
     long long decryptedText = decrypt(ct, d, n);
 
