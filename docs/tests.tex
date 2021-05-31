@@ -58,11 +58,39 @@
     \item res == -1. 
 \end{itemize}
 
-\subsection{default}
+\subsection{example}
 Входные данные -- p = 61, q = 53, e = 17, ct = 2790. Пример из Википедии.\\
 Ожидаемый результат: 
 \begin{itemize}
     \item res == 65. 
+\end{itemize}
+
+\subsection{zero}
+Входные данные -- p = 0, q = 0, e = 0, ct = 10. Проверка на нулевые аргументы.\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res == -1. 
+\end{itemize}
+
+\subsection{prime}
+Входные данные -- n = 10, n = 11, n = -10. Проверка на простые числа. Функция IsPrime.\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res == false, res2 == true, res3 == false 
+\end{itemize}
+
+\subsection{coprime\_d}
+Входные данные -- e = 6, phi = 10. Проверка на расчёт сопростого числа. Функция calculateD.\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res == -1 
+\end{itemize}
+
+\subsection{coprime\_d\_zero}
+Входные данные -- e = 0, phi = -10. Проверка на расчёт сопростого числа. Функция calculateD.\\
+Ожидаемый результат: 
+\begin{itemize}
+    \item res == -1 
 \end{itemize}
 
 \section{Тестирование bases}
@@ -74,6 +102,10 @@
     \item res[1] == "NRQWYYLMME======"
     \item res[2] == "bGFsYWxh" 
 \end{itemize}
+
+\subsection{clipboard}
+Входные данные -- в буфер помещается строка "hello".\\
+Ожидаемый результат: в буфере находится строка "hello", get\_from\_clipboard == "hello"
 
 
 \end{document}

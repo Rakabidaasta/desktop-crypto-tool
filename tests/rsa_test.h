@@ -38,4 +38,42 @@ TEST(rsa, example)
     EXPECT_EQ(res, 65);
 }
 
+TEST(rsa, zero)
+{
+    RSA rsa;
+
+    long res = rsa.solve_rsa(0, 0, 0, 10);
+    EXPECT_EQ(res, -1);
+}
+
+TEST(rsa, prime)
+{
+    RSA rsa;
+
+    bool res = rsa.IsPrime(10);
+    EXPECT_FALSE(res);
+
+    res = rsa.IsPrime(11);
+    EXPECT_TRUE(res);
+
+    res = rsa.IsPrime(-10);
+    EXPECT_FALSE(res);
+}
+
+TEST(rsa, coprime_d)
+{
+    RSA rsa;
+
+    long res = rsa.calculateD(6, 10);
+    EXPECT_EQ(res, -1);
+}
+
+TEST(rsa, coprime_d_zero)
+{
+    RSA rsa;
+
+    long res = rsa.calculateD(0, -10);
+    EXPECT_EQ(res, -1);
+}
+
 #endif // RSA_TEST_H
